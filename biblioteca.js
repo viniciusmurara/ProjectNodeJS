@@ -18,7 +18,7 @@ export function listarLivros() {
     });
 }
 
-// buscar um livro pelo título
+// buscar um livro pelo titulo
 export function buscarLivros(busca) {
     const livro = livros.find(livro => livro.titulo.toLowerCase() === busca.toLowerCase());
     if (livro) {
