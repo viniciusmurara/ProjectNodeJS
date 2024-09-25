@@ -13,11 +13,10 @@ function iniciarSistema() {
     adicionarLivro(livro3);
 
     // listar os objetos livro
-    console.log("lista de livros:");
     listarLivros();
 
     // buscar um livro pelo título
-    console.log(buscarLivros("A República"));
+    buscarLivros("A República");
 
     // editar um objeto livro
     editaLivro(1, "O Ócio Criativo", "Domenico De Masi", 1995, "Evolução Pessoal", true);

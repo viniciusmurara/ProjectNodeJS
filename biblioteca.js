@@ -13,6 +13,7 @@ export function adicionarLivro(livro) {
 
 // listar todos os livros
 export function listarLivros() {
+    console.log("lista de livros:");
     livros.forEach(livro => {
         console.log(`ID: ${livro.id}\ntítulo: ${livro.titulo}\nautor: ${livro.autor}\nano de publicação: ${livro.anoPublicacao}\ngênero: ${livro.genero}\ndisponibilidade: ${livro.disponibilidade ? 'disponível' : 'emprestado'}\n`);
     });
@@ -22,9 +23,9 @@ export function listarLivros() {
 export function buscarLivros(busca) {
     const livro = livros.find(livro => livro.titulo.toLowerCase() === busca.toLowerCase());
     if (livro) {
-        return `\nLivro encontrado com a busca ${busca}:\nID: ${livro.id}\ntítulo: ${livro.titulo}\nautor: ${livro.autor}\nano de publicação: ${livro.anoPublicacao}\ngênero: ${livro.genero}\ndisponibilidade: ${livro.disponibilidade ? 'disponível' : 'emprestado'}\n`;
+        console.log(`\nLivro encontrado com a busca ${busca}:\nID: ${livro.id}\ntítulo: ${livro.titulo}\nautor: ${livro.autor}\nano de publicação: ${livro.anoPublicacao}\ngênero: ${livro.genero}\ndisponibilidade: ${livro.disponibilidade ? 'disponível' : 'emprestado'}\n`);
     } else {
-        return "\nlivro não encontrado";
+        console.log("\nlivro não encontrado");
     }
 }
 
