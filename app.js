@@ -1,4 +1,4 @@
-import { adicionarLivro, alterarDisponibilidade, buscarLivros, buscarLivrosAutor, editaLivro, listarLivros, removerLivro, listarLivroPorGenero } from './biblioteca.js';
+import { adicionarLivro, alterarDisponibilidade, buscarLivros, buscarLivrosAutor, editaLivro, listarLivros, removerLivro, listarLivroPorGenero, ordenarLivrosPorAno } from './biblioteca.js';
 
 function iniciarSistema() {
     console.log("\n==== INÍCIO DO SISTEMA ====\n")
@@ -34,5 +34,8 @@ function iniciarSistema() {
 
     // filtrar livro por genero
     listarLivroPorGenero("Desenvolvimento Pessoal");
+
+    // ordenar livros por ano de publicação
+    ordenarLivrosPorAno("decrescente");
 }
 iniciarSistema();

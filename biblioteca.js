@@ -108,3 +108,18 @@ export function listarLivroPorGenero(genero){
         console.log("Gênero não encontrado");
     }
 }
+
+// ordenar livros pelo ano de publicação
+export function ordenarLivrosPorAno(ordem){
+    let livrosOrdenados;
+    if (ordem === "crescente") {
+        livrosOrdenados = livros.slice().sort((a, b) => a.anoPublicacao - b.anoPublicacao);
+        console.log("\nLivros organizados em ordem crescente:");
+    } else if (ordem === "decrescente") {
+        livrosOrdenados = livros.slice().sort((a, b) => b.anoPublicacao - a.anoPublicacao);
+        console.log("\nLivros organizados em ordem decrescente:");
+    }
+    livrosOrdenados.forEach(livro => {
+        console.log(`ID: ${livro.id}\ntítulo: ${livro.titulo}\nautor: ${livro.autor}\nano de publicação: ${livro.anoPublicacao}\ngênero: ${livro.genero}\ndisponibilidade: ${livro.disponibilidade ? 'disponível' : 'emprestado'}\n`);
+    });
+}
