@@ -7,8 +7,21 @@ export function adicionarLivro(livro) {
         id: idCounter++,
         ...livro
     };
-    livros.push(novoLivro);
-    return novoLivro;
+    let validaLivro = true;
+    livros.forEach(livro => {
+        if(novoLivro.titulo == livro.titulo){
+            validaLivro = false;
+        } else{
+            validaLivro = true;
+        }
+    });
+
+    // validação de dados para adição de livros
+    if (validaLivro == true){
+        livros.push(novoLivro);
+    } else {
+        console.log("Erro na criação do Livro com id " + novoLivro.id + ", título já existente!\n");
+    }
 }
 
 // listar todos os livros
@@ -21,11 +34,11 @@ export function listarLivros() {
 
 // buscar um livro pelo titulo
 export function buscarLivros(busca) {
-    const livro = livros.find(livro => livro.titulo.toLowerCase() === busca.toLowerCase());
-    if (livro) {
-        console.log(`\nLivro encontrado com a busca ${busca}:\nID: ${livro.id}\ntítulo: ${livro.titulo}\nautor: ${livro.autor}\nano de publicação: ${livro.anoPublicacao}\ngênero: ${livro.genero}\ndisponibilidade: ${livro.disponibilidade ? 'disponível' : 'emprestado'}\n`);
+    const livroEncontrado = livros.find(livro => livro.titulo.toLowerCase() === busca.toLowerCase());
+    if (livroEncontrado) {
+        console.log(`\nLivro encontrado com a busca ${busca}:\nID: ${livroEncontrado.id}\ntítulo: ${livroEncontrado.titulo}\nautor: ${livroEncontrado.autor}\nano de publicação: ${livroEncontrado.anoPublicacao}\ngênero: ${livroEncontrado.genero}\ndisponibilidade: ${livroEncontrado.disponibilidade ? 'disponível' : 'emprestado'}\n`);
     } else {
-        console.log("\nlivro não encontrado");
+        console.log("\nLivro não encontrado");
     }
 }
 
@@ -68,5 +81,30 @@ export function removerLivro(id) {
         listarLivros();
     } else {
         console.log(`\nlivro com ID ${id} não encontrado`);
+    }
+}
+
+// buscar um livro pelo autor
+export function buscarLivrosAutor(busca) {
+    const livroEncontrado = livros.find(livro => livro.autor.toLowerCase() === busca.toLowerCase());
+    if (livroEncontrado) {
+        console.log(`\nLivro encontrado com a busca ${busca}:\nID: ${livroEncontrado.id}\ntítulo: ${livroEncontrado.titulo}\nautor: ${livroEncontrado.autor}\nano de publicação: ${livroEncontrado.anoPublicacao}\ngênero: ${livroEncontrado.genero}\ndisponibilidade: ${livroEncontrado.disponibilidade ? 'disponível' : 'emprestado'}\n`);
+    } else {
+        console.log("\nLivro não encontrado");
+    }
+}
+
+// filtrar livro por genero
+export function listarLivroPorGenero(genero){
+    let validaGenero = false;
+    console.log(`\nLivro(s) encontrado(s) com o gênero ${genero}:`);
+    livros.forEach(livro => {
+        if(livro.genero.toLowerCase() === genero.toLowerCase()){
+            console.log(`ID: ${livro.id}\ntítulo: ${livro.titulo}\nautor: ${livro.autor}\nano de publicação: ${livro.anoPublicacao}\ngênero: ${livro.genero}\ndisponibilidade: ${livro.disponibilidade ? 'disponível' : 'emprestado'}\n`);
+            validaGenero = true;
+        }
+    });
+    if(validaGenero == false){
+        console.log("Gênero não encontrado");
     }
 }
